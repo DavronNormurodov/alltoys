@@ -30,6 +30,10 @@ class Tag(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField(null=True, blank=True)
 
+    # # tablega uzimiz hohlagan nomni berish
+    # class Meta:
+    #     db_table = 'tag'
+
 class Toy(models.Model):
     name = models.CharField(max_length=100)
     # user o'chirilsa toy ham o'chadi
@@ -42,3 +46,5 @@ class Toy(models.Model):
     # user = models.ForeignKey(User, related_name='toys', on_delete=models.PROTECT, null=True, blank=True)
     description = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField(Tag, related_name='toys')
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
