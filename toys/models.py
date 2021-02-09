@@ -48,3 +48,6 @@ class Toy(models.Model):
     tags = models.ManyToManyField(Tag, related_name='toys')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.name
