@@ -1,5 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from django.utils import timezone
+
 from .models import Tag, Toy
 
 # Create your views here.
@@ -9,4 +11,5 @@ def dashboard(request):
 
 def get_toys(request):
     toys = Toy.objects.all()
+    toys = toys.filter(created_at__year=timezone.now().year)
     return render(request, 'toys/toys.html', {'toys': toys})
